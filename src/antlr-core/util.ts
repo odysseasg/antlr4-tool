@@ -47,6 +47,7 @@ const ignoredMethods: { [key: string]: boolean} = {
 interface MethodSpec {
     name: string;
     args: string;
+    isArray?: boolean;
 }
 
 export function getMethods(obj: any, isRuleContext: boolean): MethodSpec[] {
@@ -73,6 +74,11 @@ export function getMethods(obj: any, isRuleContext: boolean): MethodSpec[] {
                 result.push({
                     name: id,
                     args: 'i: number'
+                });
+                result.push({
+                    name: id,
+                    args: '',
+                    isArray: true
                 });
             }
         } catch (err) {
