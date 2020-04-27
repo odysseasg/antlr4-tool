@@ -47,7 +47,7 @@ const ignoredMethods: { [key: string]: boolean} = {
 interface MethodSpec {
     name: string;
     args: string;
-    isArray?: boolean;
+    returnsArray?: boolean;
 }
 
 export function getMethods(obj: any, isRuleContext: boolean): MethodSpec[] {
@@ -78,7 +78,7 @@ export function getMethods(obj: any, isRuleContext: boolean): MethodSpec[] {
                 result.push({
                     name: id,
                     args: '',
-                    isArray: true
+                    returnsArray: true
                 });
             }
         } catch (err) {

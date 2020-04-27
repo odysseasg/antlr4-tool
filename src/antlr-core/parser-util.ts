@@ -161,7 +161,7 @@ export function contextObjectAst(parser: any) {
                 methodObj.type = 'TerminalNode';
             }
 
-            if (method.isArray) {
+            if (method.returnsArray) {
                 methodObj.type = `${methodObj.type}[]`;
             }
 
