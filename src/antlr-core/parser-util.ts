@@ -91,7 +91,7 @@ export function parserMethods(parser: any) {
     const symbols = symbolSet(parser);
     const obj = {};
 
-    const methods = util.getMethods(parser);
+    const methods = util.getMethods(parser, false);
     const ownMethods = _.filter(methods, method => (
         ruleToContextMap.has(method.name) || symbols.has(method.name)
     ));
@@ -145,7 +145,7 @@ export function contextObjectAst(parser: any) {
         const obj = {} as any;
         obj.name = context.name;
 
-        const methods = _.filter(util.getMethods(context.prototype), (mth) => mth !== 'depth');
+        const methods = util.getMethods(context.prototype, true);
         const ownMethods = _.filter(methods, method => (
             ruleToContextMap.has(method.name) || symbols.has(method.name)
         ));
